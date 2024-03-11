@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://kit.fontawesome.com/3c2c14697c.js" crossorigin="anonymous"></script>
+    <title>Sing Up</title>
+</head>
+<header>
+    <nav class="nav_2">
+        <div class="bg_i">
+            <a href="#"><i class="fa-solid fa-bars icon_1"></i></a>
+        </div>
+        <a href="{% url 'index' %}"><img src="{% static 'imgs/FIFA_Logo_White.webp' %}" alt="" class="img_logo"></a>
+    </nav>
+</header>
+<body>
+    <div class="container_login">
+        <div class="form_2" id="sing_form">
+            <form method="post" action="{% url 'sing_up' %}">
+                {% csrf_token %}
+                <a href="{% url 'login' %}" class="link_t2">LOGIN</a>
+                <label class="text_t1">SING UP</label><br><br>
+                <label class="text_2" for="">Nombres</label><br><br>
+                <input class="inp_1" type="text" name="first_name" id="first_name" placeholder="Primer nombre" required>
+                <input class="inp_1" type="text" name="second_name" id="second_name" placeholder="Segundo nombre"><br><br>
+                <label class="text_2" for="">Nombre de usuario</label><br><br>
+                <input class="inp_2" type="text" name="username" id="username" required><br><br>
+                <label class="text_2" for="">Correo electronico</label><br><br>
+                <input class="inp_2" type="email" name="email" id="email" required><br><br>
+                <label class="text_2" for="">Contraseña</label><br><br>
+                <input class="inp_2" type="password" name="password" id="password" required><br><br>
+                <input class="btn_t1" type="submit" name="enviar" id="enviar">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

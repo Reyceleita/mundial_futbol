@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://kit.fontawesome.com/3c2c14697c.js" crossorigin="anonymous"></script>
+    <title>Jugadores</title>
+</head>
+<header>
+    <nav class="nav_2">
+        <div class="bg_i">
+            <a href="#"><i class="fa-solid fa-bars icon_1"></i></a>
+        </div>
+        <a href="{% url 'index' %}"><img src="{% static 'imgs/FIFA_Logo_White.webp' %}" alt="" class="img_logo"></a>
+        <a href="#" class="text_t3 noto-sans">MODIFICAR EQUIPOS PARTICIPANTES</a>
+        <a href="#" class="text_t3 noto-sans">MODIFICAR JUGADORES DESTACADOS</a>
+        <a href="#" class="text_t3 noto-sans">MODIFICAR PROXIMOS PARTIDOS</a>
+        <div class="cont_icon">
+            <a href="#"><i class="icon_2 fa-solid fa-magnifying-glass"></i></a>
+            <a href="#"><i class="icon_2 fa-solid fa-globe"></i></a>
+            <a href="{% url 'login' %}"><i class="icon_2 fa-regular fa-user"></i></a>     
+        </div>
+    </nav>
+</header>
+<body>
+    <div>
+        <button id="crear" class="boton_1">Crear</button>
+        <a class="boton_1" href="{% url 'posiciones' %}">Posiciones</a>
+
+    </div>
+    <div class="container_of" id="container_jugadores">
+        <div class="form_2" >
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="">Nombre</label>
+                <label for="">Apellido</label><br><br>
+                <input type="text" name="name" id="name" placeholder="Nombre" required><br><br>
+                <input type="text" name="surname" id="surname" placeholder="Apellido" required><br><br>
+                <label for="">Foto del jugador</label><br><br>
+                <input type="file" name="photo" id="photo" accept="image/*" required><br><br>
+                <label for="">Fecha de nacimiento</label><br><br>
+                <input type="date" name="birthday" id="birthday" required><br><br>
+                <label for="">Numero de camiseta</label><br><br>
+                <input type="number" name="number" id="number" required><br><br>
+                <label for="">¿Es titular?</label><br><br>
+                <input type="radio" name="titular" id="si" value="True">
+                <label for="">Si</label><br><br>
+                <input type="radio" name="titular" id="no" value="False">
+                <label for="">No</label><br><br>
+                <label for="">Posición</label><br><br>
+                <select name="position" id="position">
+                    {% for posicion in posicion %}
+                        <option value="{{ posicion.id }}">{{ posicion.name }}</option>
+                    {% endfor %}
+                </select>
+                <select name="equipo" id="equipo">
+                    {% for equipo in equipo %}
+                        <option value="{{ equipo.id }}">{{ equipo.name }}</option>
+                    {% endfor %} 
+                </select>
+                <br><br>
+                <input class="boton_1" type="submit" name="env" id="env">
+            </form>
+        </div>
+    </div>
+    {% for jugador in jugador %}
+        <div>
+            <table>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Foto</th>
+                    <th>Nacimiento</th>
+                    <th>Número de camiseta</th>
+                    <th>Titular?</th>
+                    <th>Equipo</th>
+                    <th>Posición</th>
+                    <th>Opciones</th>
+                </tr>
+                <tr>
+                    <td>
+                        {{ jugador.name }}
+                    </td>
+                    <td>
+                        {{ jugador.surname }}
+                    </td>
+                    <td>
+                        <img class="img_2" src="{{ jugador.photo.url }}" alt="">
+                    </td>
+                    <td>
+                        {{ jugador.birthday }}
+                    </td>
+                    <td>
+                        {{ jugador.number }}
+                    </td>
+                    <td>
+                        {{ jugador.holder }}
+                    </td>
+                    <td>
+                        {{ jugador.Equipo.name }}
+                    </td>
+                    <td>
+                        {{ jugador.Position.name }}
+                    </td>
+                    <td>
+                        <a class="link_t2" href="{% url 'edit_jugador' jugador.id %}">Editar</a>
+                        <a class="link_t2" href="{% url 'delete_jugador' jugador.id %}">Eliminar</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    {% endfor %}
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

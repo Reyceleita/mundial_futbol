@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copa Mundial de la FIFA</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://kit.fontawesome.com/3c2c14697c.js" crossorigin="anonymous"></script>
+</head>
+<header>
+    <nav class="nav_2">
+        <div class="bg_i">
+            <a href="#"><i class="fa-solid fa-bars icon_1"></i></a>
+        </div>
+        <a href="{% url 'index' %}"><img src="{% static 'imgs/FIFA_Logo_White.webp' %}" alt="" class="img_logo"></a>
+        <a href="#" class="text_t3 noto-sans">EQUIPOS PARTICIPANTES</a>
+        <a href="#" class="text_t3 noto-sans">JUGADORES DESTACADOS</a>
+        <a href="#" class="text_t3 noto-sans">PROXIMOS PARTIDOS</a>
+        <div class="cont_icon">
+            <a href="#"><i class="icon_2 fa-solid fa-magnifying-glass"></i></a>
+            <a href="#"><i class="icon_2 fa-solid fa-globe"></i></a>
+            <a href="{% url 'login' %}"><i class="icon_2 fa-regular fa-user"></i></a>     
+        </div>
+    </nav>
+</header>
+<body>
+    <div class="img_inicio">
+        <img src="{% static 'imgs/main_img.jpg' %}" alt="">
+    </div>
+    <div class="cont_text">
+        <div class="cont_text_1">
+            <p>
+                El Mundial de Fútbol, conocido oficialmente como la Copa Mundial de la FIFA, es el torneo internacional más prestigioso y esperado en el mundo del fútbol. Organizado por la FIFA (Federación Internacional de Fútbol Asociación), este evento reúne a las mejores selecciones nacionales de todo el mundo cada cuatro años para competir por el título de campeón mundial.
+            </p>
+        </div>
+        <div class="cont_img_1">
+            <img src="{% static 'imgs/fondo.png' %}" alt="">
+        </div>
+        <div class="cont_img_2">
+            <img src="{% static 'imgs/fondo.png' %}" alt="">
+        </div>
+        <div class="cont_text_2">
+            El torneo se lleva a cabo en diferentes países anfitriones, seleccionados a través de un proceso de licitación, y consiste en una emocionante serie de partidos que se disputan durante aproximadamente un mes. Equipos de todos los continentes compiten en una intensa fase de clasificación para asegurar un lugar en el torneo final.
+        </div>
+    </div>
+    <div class="cont_1">
+        <div class="cont_tarj">
+            <h3 class="text_tarj">Equipos participantes</h3>
+            <img src="{% static 'imgs/equipo_img.webp' %}" alt="" class="img_tarj">
+            <a href="{% url 'equipos' %}" class="boton_1">Mas info</a>
+        </div>
+        <div class="cont_tarj">
+            <h3 class="text_tarj">Jugadores destacados</h3>
+            <img src="{% static 'imgs/equipo_img.webp' %}" alt="" class="img_tarj">
+            <a href="{% url 'jugadores' %}" class="boton_1">Mas info</a>
+        </div>
+        <div class="cont_tarj">
+            <h3 class="text_tarj">Proximos partidos</h3>
+            <img src="{% static 'imgs/equipo_img.webp' %}" alt="" class="img_tarj">
+            <a href="{% url 'tecnicos' %}" class="boton_1">Mas info</a>
+        </div>
+    </div>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+<footer>
+
+</footer>
+</html>

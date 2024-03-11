@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://kit.fontawesome.com/3c2c14697c.js" crossorigin="anonymous"></script>
+    <title>Login</title>
+</head>
+<header>
+    <nav class="nav_2">
+        <div class="bg_i">
+            <a href="#"><i class="fa-solid fa-bars icon_1"></i></a>
+        </div>
+        <a href="{% url 'index' %}"><img src="{% static 'imgs/FIFA_Logo_White.webp' %}" alt="" class="img_logo"></a>
+    </nav>
+</header>
+<body>
+    <div class="container_login">
+        <div class="login" id="login_form">
+            <form method="post" action="">
+                {% csrf_token %}
+                <label class="text_t1" for="">LOGIN</label>
+                <a href="{% url 'sing_up' %}" class="link_t2">SING UP</a><br><br><br>
+                <label for="" class="text_2">Usuario</label><br><br>
+                <input class="inp_1" type="text" name="username" id="username" placeholder="Username" required><br><br>
+                <label for="" class="text_2">Contraseña</label><br><br>
+                <input class="inp_1" type="password" name="password" id="password" placeholder="Contraseña" required><br><br>
+                <input class="btn_t1" type="submit" name="env" id="env">
+            </form>
+        </div>
+        
+    </div>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

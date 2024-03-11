@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://kit.fontawesome.com/3c2c14697c.js" crossorigin="anonymous"></script>
+    <title>Jugadores</title>
+</head>
+<header>
+    <nav class="nav_2">
+        <div class="bg_i">
+            <a href="#"><i class="fa-solid fa-bars icon_1"></i></a>
+        </div>
+        <a href="{% url 'index' %}"><img src="{% static 'imgs/FIFA_Logo_White.webp' %}" alt="" class="img_logo"></a>
+        <a href="#" class="text_t3 noto-sans">MODIFICAR EQUIPOS PARTICIPANTES</a>
+        <a href="#" class="text_t3 noto-sans">MODIFICAR JUGADORES DESTACADOS</a>
+        <a href="#" class="text_t3 noto-sans">MODIFICAR PROXIMOS PARTIDOS</a>
+        <div class="cont_icon">
+            <a href="#"><i class="icon_2 fa-solid fa-magnifying-glass"></i></a>
+            <a href="#"><i class="icon_2 fa-solid fa-globe"></i></a>
+            <a href="{% url 'login' %}"><i class="icon_2 fa-regular fa-user"></i></a>     
+        </div>
+    </nav>
+</header>
+<body>
+    <div>
+        <button id="crear" class="boton_1">Crear</button>
+    </div>
+
+    <div class="container_of" id="container_posiciones">
+        <div class="form_2">
+            <form action="" method="post">
+                {% csrf_token %}
+                <label for="">Nombre</label><br><br>
+                <input type="text" name="name" id="name" placeholder="nombre" required><br><br>
+                <label for="">Descripcion</label><br><br>
+                <textarea name="description" id="description" cols="30" rows="10" required></textarea><br><br>
+                <input class="boton_1" type="submit" name="env" id="env" value="Enviar">
+            </form>
+        </div>
+    </div>
+
+{% for posicionesM in posicionesM %}
+    <div >
+        <table>
+            <tr>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Descripcion
+                </th>
+                <th>
+                    Editar
+                </th>
+                <th>
+                    Eliminar
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    {{ posicionesM.name }}
+                </td>
+                <td>
+                    {{ posicionesM.description }}
+                </td>
+                <td>
+                    <a class="boton_1" href="{% url 'edit_posicion' posicionesM.id %}">Editar</a>
+                </td>
+                <td>
+                    <a class="boton_1" href="{% url 'delete_posicion' posicionesM.id %}">Eliminar</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+{% endfor %}
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

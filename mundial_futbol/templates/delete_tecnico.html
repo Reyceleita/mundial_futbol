@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://kit.fontawesome.com/3c2c14697c.js" crossorigin="anonymous"></script>
+    <title>Jugadores</title>
+</head>
+<header>
+    <nav class="nav_2">
+        <div class="bg_i">
+            <a href="#"><i class="fa-solid fa-bars icon_1"></i></a>
+        </div>
+        <a href="{% url 'index' %}"><img src="{% static 'imgs/FIFA_Logo_White.webp' %}" alt="" class="img_logo"></a>
+        <a href="#" class="text_t3 noto-sans">MODIFICAR EQUIPOS PARTICIPANTES</a>
+        <a href="#" class="text_t3 noto-sans">MODIFICAR JUGADORES DESTACADOS</a>
+        <a href="#" class="text_t3 noto-sans">MODIFICAR PROXIMOS PARTIDOS</a>
+        <div class="cont_icon">
+            <a href="#"><i class="icon_2 fa-solid fa-magnifying-glass"></i></a>
+            <a href="#"><i class="icon_2 fa-solid fa-globe"></i></a>
+            <a href="{% url 'login' %}"><i class="icon_2 fa-regular fa-user"></i></a>     
+        </div>
+    </nav>
+</header>
+<body>
+    <div class="container_on">
+        <div class="form_2">
+            <form action="" method="post">
+                {% csrf_token %}
+                <label for="">Quieres eliminar el tecnico</label><br>
+                {{ tecnico.name }} <br><br>
+                <input class="boton_1" type="submit" value="Eliminar">
+            </form>
+            <a class="boton_1" href="{% url 'posiciones' %}">Cancelar</a>
+        </div>
+    </div>
+</body>
+</html>
